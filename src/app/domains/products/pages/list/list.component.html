@@ -1,10 +1,10 @@
 <div class="max-w-screen-xl mx-auto">
-  <app-header/>
+  <app-header [cart]="cart()"/>
   <div class="grid grid-cols-4 gap-8 mt-5">
     @for(product of products(); track product.id){
 
     <app-product
-      (addToCart)="fromChild($event)"
+      (addToCart)="addToCart($event)"
       [product]="product"
     />
     }

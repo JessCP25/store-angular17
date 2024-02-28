@@ -14,6 +14,6 @@ export class ProductComponent {
   @Output() addToCart = new EventEmitter();
 
   addToCartHandler(){
-    this.addToCart.emit('Hola soy un mensaje del hijo');
+    this.addToCart.emit(this.product);
   }
 }

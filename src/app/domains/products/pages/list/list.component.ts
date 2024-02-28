@@ -13,6 +13,7 @@ import { HeaderComponent } from '../../../shared/components/header/header.compon
 })
 export class ListComponent {
   products = signal<Product[]>([]);
+  cart = signal<Product[]>([]);
 
   constructor() {
     const initProducts: Product[] = [
@@ -103,7 +104,8 @@ export class ListComponent {
     ];
     this.products.set(initProducts);
   }
-  fromChild(value: string) {
-    console.log('Soy el padre', value);
+
+  addToCart(product: Product) {
+    this.cart.update(prevValue => [...prevValue, product]);
   }
 }

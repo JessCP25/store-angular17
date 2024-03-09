@@ -1,13 +1,6 @@
-<div class="max-w-screen-xl mx-auto">
-  <app-header/>
-  <div class="grid grid-cols-4 gap-8 mt-5">
-    @for(product of products(); track product.id){
+<div class="grid grid-cols-4 gap-8 mt-5">
+  @for(product of products(); track product.id){
 
-    <app-product
-      (addToCart)="addToCart($event)"
-      [product]="product"
-    />
-    }
-  </div>
-
+  <app-product (addToCart)="addToCart($event)" [product]="product" />
+  }
 </div>

@@ -11,7 +11,9 @@ export class HighlightDirective implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.element.nativeElement.style.backgroundColor = "gray";
+    this.element.nativeElement.style.backgroundColor = "#dcdcdc";
+    this.element.nativeElement.style.borderRadius = '10px';
+    this.element.nativeElement.style.padding = '0 10px';
   }
 
 }

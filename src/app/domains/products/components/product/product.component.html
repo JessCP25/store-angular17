@@ -1,5 +1,8 @@
 <div class="group rounded-lg border">
-  <a href="#" class="w-full overflow-hidden rounded-t-lg bg-gray-200">
+  <a
+    [routerLink]="['/product', product.id]"
+    class="w-full overflow-hidden rounded-t-lg bg-gray-200"
+  >
     <img
       [src]="product.images[0]"
       [alt]="product.title"
@@ -14,9 +17,9 @@
       {{ product.price | currency : "$" : "symbol" : "1.0" }}
     </p>
 
-    <p class="text-lg font-medium text-gray-900">
+    <!-- <p class="text-lg font-medium text-gray-900">
       {{ product.creationAt | date : "short" | timeAgo }}
-    </p>
+    </p> -->
     <p class="text-lg font-medium text-gray-900">
       {{ product.creationAt | appTimeAgo1 }}
     </p>

@@ -9,9 +9,15 @@ export class ProductService {
 
   private http = inject(HttpClient);
 
+  private baseURL = 'https://api.escuelajs.co/api/v1/products';
+
   constructor() { }
 
   getProducts() {
-    return this.http.get<Product[]>('https://api.escuelajs.co/api/v1/products');
+    return this.http.get<Product[]>(this.baseURL);
+  }
+
+  getOne(id: string){
+    return this.http.get<Product>(`${this.baseURL}/${id}`);
   }
 }

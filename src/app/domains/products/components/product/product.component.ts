@@ -5,20 +5,28 @@ import { ReversePipe } from '@shared/pipes/reverse.pipe';
 import { TimeAgoPipe } from '@shared/pipes/time-ago.pipe';
 import { TimeAgo1Pipe } from '@shared/pipes/time-ago-1.pipe';
 import { HighlightDirective } from '@shared/directives/highlight.directive';
+import { RouterLinkWithHref } from '@angular/router';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [CommonModule, ReversePipe, TimeAgoPipe, TimeAgo1Pipe, HighlightDirective],
+  imports: [
+    CommonModule,
+    ReversePipe,
+    TimeAgoPipe,
+    TimeAgo1Pipe,
+    HighlightDirective,
+    RouterLinkWithHref,
+  ],
   templateUrl: './product.component.html',
-  styleUrl: './product.component.css'
+  styleUrl: './product.component.css',
 })
 export class ProductComponent {
-  @Input({required: true}) product!: Product;
+  @Input({ required: true }) product!: Product;
 
   @Output() addToCart = new EventEmitter();
 
-  addToCartHandler(){
+  addToCartHandler() {
     this.addToCart.emit(this.product);
   }
 }

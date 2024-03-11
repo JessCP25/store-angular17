@@ -6,6 +6,8 @@ import { HeaderComponent } from '@shared/components/header/header.component';
 import { CartService } from '@shared/services/cart.service';
 import { ProductService } from '@shared/services/product.service';
 import { ThisReceiver } from '@angular/compiler';
+import { CategoryService } from '@shared/services/category.service';
+import { Category } from '@shared/models/category.model';
 
 @Component({
   selector: 'app-list',
@@ -16,11 +18,27 @@ import { ThisReceiver } from '@angular/compiler';
 })
 export class ListComponent implements OnInit{
   products = signal<Product[]>([]);
+  categories = signal<Category[]>([]);
 
   private cartService = inject(CartService);
   private productService = inject(ProductService);
+  private categoryService = inject(CategoryService);
 
   ngOnInit(): void {
+    this.getProducts();
+    this.getCategories();
+  }
+
+  private getProducts(){
+    this.categoryService.getCategories()
+    .subscribe({
+      next: (categories)=>{
+        this.categories.set(categories);
+      }
+    })
+  }
+
+  private getCategories(){
     this.productService.getProducts()
     .subscribe({
       next: (products)=>{
